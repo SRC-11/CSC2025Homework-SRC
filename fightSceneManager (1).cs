@@ -20,6 +20,7 @@ public class fightSceneManager : MonoBehaviour
 
     private bool isPlayerTurn = true;
     private bool playerChoiceMade = false;
+    private bool isFightOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -84,4 +85,30 @@ public class fightSceneManager : MonoBehaviour
             this.timeSinceLastTimeDeltaTime = 0.0f;
         }
     }
+
+    void takeASwing (this.player, this.monster)
+     {
+         if (this.theFight.isPlayerTurn == true)
+         {
+             Core.theMonster.getCurrHp() = this.currHp - Core.thePlayer.getAC();
+             print ("The enemy took" + Core.thePlayer.getAC() + "damage!");
+             isPlayerTurn = false;
+             if (this.currHp <= 0)
+             {
+                  print("You Win!");
+                  this.theFight.isFightOver = true;
+            }
+         }
+         if (this.theFight.isPlayerTurn != true)
+         {
+             Core.thePlayer.getCurrHp() = this.currHp - Core.theMonster.getAC();
+             print ("You took" + Core.theMonster.getAC() + "damage!");\
+             isPlayerTurn = true;
+             if (this.currHp <= 0)
+             {
+                  print("You Lose!");
+                  this.theFight.isFightOver = true;
+            }
+         }
+     }
 }
