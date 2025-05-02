@@ -7,6 +7,7 @@ public class Room
     private Player thePlayer;
 
     private GameObject[] theDoors;
+    private GameObject[] mapSquare;
     private Exit[] availableExits = new Exit[4];
     private int currNumberOfExits = 0;
 
@@ -46,6 +47,8 @@ public class Room
             //place them in the destination room in that direction
             Room destinationRoom = theExit.getDestination();
             destinationRoom.setPlayer(Core.thePlayer);
+            Core.thePlayer.getCurrentRoom().buildMap();
+            this.hasPlayerBeenHere = true;
             
             //update the room the player is currently in so the room exits visually update
             return true;
@@ -108,5 +111,15 @@ public class Room
             Console.Error.WriteLine("there are too many exits!!!!");
         }
     }
+    public void buildMap()
+    {
+        int i = 0;
+       if (this.hasPlayerBeenHere == false)
+       {
+         this.mapSquare = new mapSquare[i]
+             int i = int i++;
 
+       }
+
+    }
 }
